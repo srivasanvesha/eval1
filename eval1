@@ -1,0 +1,68 @@
+class Library:
+    def _init_(self):
+        self.inventory = {};
+    def add_book(self, title, author, isbn, genre, availability_status):
+        if isbn in self.inventory:
+            print("Book already exsists")
+        else:
+            self.inventory[isbn] = {
+                "title": title,
+                "author": author,
+                "ISBN": isbn,
+                "genre": genre,
+                "availability_status": availability_status
+            }
+        print("Book added!")
+        
+     def update_book_details(self, title, author, isbn, genre, availbility_status):
+         if isbn not in self.inventory:
+             print("Book does not exsists")
+        else:
+            if title is not none:
+                self.inventory[isbn][title]: title
+            if author is not none:
+                self.inventory[isbn][author]: author
+            if genre is not none:
+                self.inventory[isbn][genre]: genre
+            if availability_status is not none:
+                self.inventory[isbn][availability_status]: availability_status
+        print("Book with given ISBN updated!")
+
+    def search_by_isbn(self, isbn):
+        book = self.inventory.get(isbn, "none")
+        if book is not none:
+            print("Book with the given ISBN here: {book}")
+        else:
+            print("No book with given ISBN found!")
+
+    def generate_genre_report():
+        genre_report = {}
+        for book in self.inventory.values():
+            genre = book['Genre']
+            if book['availbility_status'] == 'availbility_status':
+                if genre not in genre_report:
+                    genre_report[genre] = []
+                genre_report[genre].append(book['Title'])
+        
+        if not genre_report:
+            print("No available books to report.")
+        else:
+            print("Available books by genre:")
+            for genre, titles in genre_report.items():
+                print("Genre: {genre}")
+                for title in titles:
+                    print("title: {title}")
+    
+    
+    library = Library()
+
+    library.add_book("Harry Potter", "J.K.Rolling", "45", "fiction", "Available")
+    library.add_book("2 states", "Chetan Bhagat", "32", "rom-com", "Not available")
+
+    library.update_book_details("45", availability="Available")
+
+    book_details = library.search_by_isbn("45")
+    print("Book Details of ISBN 45: {book_details}")
+
+    library.generate_genre_report()
+
